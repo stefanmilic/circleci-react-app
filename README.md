@@ -1,5 +1,7 @@
 # Deploying React App via Circleci
 
+Deploying react app to aws s3 bucket using circleci orb `circleci/aws-s3@3.0`
+
 ## React Table Example
 
 Demo of React Table V7 using TypeScript as well as Material UI
