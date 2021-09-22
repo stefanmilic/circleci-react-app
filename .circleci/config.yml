@@ -27,17 +27,16 @@ jobs:
             - ~/.npm
             - ~/.cache
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build
+      # - run: yarn build
+      # - persist_to_workspace:
+      #     root: .
+      #     paths:
+      #       - build
 
   build_dev:
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: .
+      - run: yarn build
       - aws-s3/sync:
           arguments: |
             --acl public-read \
@@ -48,8 +47,7 @@ jobs:
   build_prod:
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: .
+      - run: yarn build
       - aws-s3/sync:
           arguments: |
             --acl public-read \
